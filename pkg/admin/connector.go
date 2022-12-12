@@ -154,8 +154,6 @@ func NewConnector(config ConnectorConfig) (*Connector, error) {
 			SASLMechanism: mechanismClient,
 			Timeout:       10 * time.Second,
 			TLS:           tlsConfig,
-			// Hotfix for https://github.com/segmentio/topicctl/issues/112
-			MetadataTTL: 10 * time.Minute,
 		}
 	}
 
@@ -170,6 +168,8 @@ func NewConnector(config ConnectorConfig) (*Connector, error) {
 			Dial: connector.Dialer.DialFunc,
 			SASL: mechanismClient,
 			TLS:  tlsConfig,
+			// Hotfix for https://github.com/segmentio/topicctl/issues/112
+			MetadataTTL: 10 * time.Minute,
 		},
 	}
 
